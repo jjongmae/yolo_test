@@ -3,7 +3,7 @@ import cv2, numpy as np
 from ultralytics import YOLO
 
 # ── 설정 ────────────────────────────────────────────────
-model       = YOLO("yolo11n.pt")                       # 모델
+model       = YOLO("yolo11x.pt")                       # 모델
 video_path  = r"D:\data\여주시험도로_20250610\카메라1_202506101340.mp4"
 cap         = cv2.VideoCapture(video_path)
 palette     = np.random.randint(0, 255, size=(1000, 3))  # 클래스 ID → 색상
@@ -19,7 +19,7 @@ while cap.isOpened():
     frame_idx += 1
 
     # ── 검출만 수행 ──────────────────────────────────────
-    result = model.predict(frame, conf=0.25, iou=0.5, verbose=False)[0]
+    result = model.predict(frame, conf=0.25, iou=0.7, verbose=False)[0]
 
     if result.boxes:
         boxes_xyxy = result.boxes.xyxy.cpu().numpy()  # [x1, y1, x2, y2]
