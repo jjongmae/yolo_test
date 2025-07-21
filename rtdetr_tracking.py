@@ -4,7 +4,7 @@ from ultralytics import YOLO
 
 # ── 설정 ────────────────────────────────────────────────
 model       = YOLO("rtdetr-l.pt")                       # 모델
-video_path  = r"D:\data\여주시험도로_20250610\카메라1_202506101340.mp4"
+video_path  = r"output_pedestrain.mp4"
 cap         = cv2.VideoCapture(video_path)
 track_hist  = defaultdict(list)                        # {id: [(x, y), ...]}
 max_hist    = 30                                       # 궤적 길이
